@@ -1,0 +1,641 @@
+::-webkit-scrollbar {
+  width: 0;
+}
+
+body {
+  background-color: rgb(20, 20, 20);
+  color: white;
+  font-family: system-ui;
+  margin: 0;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  user-select: none;
+  width: 100vw;
+  transition: opacity 0.5s ease-in-out;
+}
+
+#aim_div {
+  display: flex;
+  justify-content: space-between;
+  pointer-events: none;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  z-index: 4;
+}
+
+/*crosses in the middle*/
+.aim {
+  opacity: 1;
+  transform: rotate(45deg);
+  animation: aim 0.8s forwards ease-out;
+  transition: opacity 800ms ease-in-out;
+}
+
+.aim_side {
+  opacity: 0;
+  transform: rotate(45deg);
+  margin: 0 15vw;
+  transition: opacity 800ms ease-in-out;
+}
+
+.rotateCounterClockwise {
+  animation: rotateCounterClockwise 800ms forwards ease-out;
+}
+
+.rotateClockwise {
+  animation: rotateClockwise 800ms forwards ease-out;
+}
+
+/*numbers on the bottom counter*/
+.counterDown {
+  align-items: top;
+  display: flex;
+  justify-content: space-between;
+  height: 1.3em;
+  
+  left: 50%;
+  top: 90vh;
+  transform: translate(-50%, 0%);
+  
+  overflow: clip;
+  position: absolute;
+  width: 2.5em;
+  z-index: 4;
+}
+
+.counterUp {
+  align-items: top;
+  display: flex;
+  justify-content: space-between;
+  height: 1.3em;
+  
+  right: 3vw;
+  top: 11vh;
+  transform: translate(0%, 0%);
+  
+  overflow: clip;
+  position: absolute;
+  width: 2.5em;
+  z-index: 4; 
+}
+
+#dash {
+  display: flex;
+  justify-content: center;
+  margin-top: 0;
+  overflow: clip;
+  width: 1em;
+}
+
+.dash {
+  animation: dash 400ms forwards ease-out;
+}
+
+.dashBack {
+  animation: dashBack 400ms forwards ease-out; 
+}
+
+#totalImagesNumber {
+  display: flex;
+  justify-content: right;
+  margin-top: 0;
+  width: 1em;
+  
+}
+
+.totalImagesNumberAnimation {
+  animation: totalImagesNumber 400ms forwards ease-out; 
+}
+
+.totalImagesNumberAnimationBack {
+  animation: totalImagesNumberAnimationBack 400ms forwards ease-out; 
+}
+
+#currentImagesNumber {
+  display: grid;
+  gap: 0;
+  transform: translate(0, 0);
+  grid-auto-rows: 1.2em;
+  width: 1em;
+  transition: transform 400ms ease-out;
+}
+
+.currentImagesNumber {
+  animation: currentImagesNumber 400ms ease-out;
+} 
+
+.currentImagesNumberBack {
+  animation: currentImagesNumberBack 400ms ease-out;
+}
+
+/*horizontal images*/
+#image_horizontal_track {
+  display: flex;
+  left: calc(50% - 20vmin);
+  top: 50%;
+  gap: 4vmin;
+  position: absolute;
+  transform: translate(0%, -50%);
+  transition: transform 800ms ease-out;
+  z-index: 3;
+}
+
+#image_horizontal_track > .image {
+  height: 56vmin;
+  object-fit: cover;
+  object-position: 100% center;
+  width: 40vmin;
+  transition: width 0.8s ease-out,
+    height 0.8s ease-out,
+    object-position 0.8s ease-out,
+    transform 0.8s ease-out;
+}
+#image_horizontal_track > .imageDown {
+  height: 6vmin;
+  width: 10.6vmin;
+  transform: translateY(45vh);
+  transition: width 0.48s ease-out,
+    height 0.48s ease-out,
+    transform 0.48s ease-out;
+}
+
+#image_horizontal_track > .imageHide {
+  opacity: 0;
+  transform: translateY(150vh);
+  transition: opacity 0s;
+}
+
+#image_horizontal_track > .imageStoryDown {
+  transform: translateY(60vh);
+  transition: transform 0.8s ease-out;
+}
+
+#image_horizontal_track > .imageStoreHide {
+  opacity: 0;
+  transition: opacity 0s;
+}
+
+/*fullscreenimage*/
+#fullScreenImagesDiv {
+  position: relative;
+  opacity: 0;
+  z-index: 1;
+}
+
+#central {
+  width: 40vmin;
+  height: 56vmin;
+  object-fit: cover;
+  object-position: 100% center;
+  position: absolute;
+}
+
+.centralStoryHide {
+  animation: centralStoryHide 800ms forwards ease-out;
+}
+
+#left {
+  left: -120%;
+  height: 100vh;
+  object-fit: cover;
+  position: absolute;
+  width: 100vw;
+}
+
+#right {
+  left: 120%;
+  height: 100vh;
+  object-fit: cover;
+  position: absolute;
+  width: 100vw;
+  z-index: 1;
+}
+
+/**/
+#fullScreenImagesHeadlineDiv {
+  left: 50%;
+  height: 2.5em;
+  overflow: clip;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+}
+
+#fullScreenImagesHeadline {
+  cursor: pointer;
+  font-size: 2em;
+  font-weight: 500;
+  position: relative;
+  transform: translateY(-1.25em);
+}
+
+#fullScreenImagesHeadline:hover {
+  color: grey;
+  transition: color 400ms ease-out;
+}
+
+.imagesHeadlineShow {
+  animation: showImagesHeadline 800ms forwards ease-out;
+}
+
+.imagesHeadlineHide {
+  animation: hideImagesHeadline 800ms forwards ease-out;
+}
+
+.imagesHeadlineChange {
+  animation: changeImagesHeadline 800ms forwards ease-out;
+}
+
+/*story*/
+#storyImagesContainer {
+  position: relative;
+  z-index: 2;
+}
+ /*back button*/
+#backSpan {
+  left: 3vw;
+  height: calc(100% - 11vh + 0.5em);
+  position: absolute;
+  top: 11vh;
+  transform: translateY(-0.5em);
+  overflow: clip;
+  z-index: 3;
+}
+
+#back {
+  cursor: pointer;
+  top: 10vh;
+  transform: translateY(-0.5em);
+  position: sticky;
+}
+
+#back:hover {
+  color: grey;
+  transition: all 400ms ease-out;
+}
+
+.backShow {
+  animation: backShow 800ms forwards ease-out;
+}
+
+/**/
+#storyDiv {
+  left: 53vw;
+  height: calc(100vh - 11vh + 0.5em);
+  width: 38vw;
+  overflow: clip;
+  top: 11vh;
+  transform: translateY(-0.5em);
+  position: absolute;
+  word-break: break-word;
+}
+
+#storyHeader {
+  cursor: pointer;
+  transform: translateY(-1em);
+  font-size: 2em;
+  word-break: break-all;
+  text-align: center;
+}
+
+.storyHeaderShow {
+  animation: storyHeaderShow 800ms forwards ease-out;
+}
+
+#storyText {
+  font-size: 1em;
+  transform: translateY(calc(-4em + 3vw));
+  word-break: break-all;
+}
+
+.showStory {
+  animation: showStory 1600ms ease;
+}
+
+/*story and header*/
+#headerStoryImageSpan {
+  top: 100vh;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  overflow: clip;
+}
+
+.headerStoryImageSpan {
+  animation: headerStoryImageSpan 800ms forwards ease-out;
+}
+
+#headerStoryImage {
+  transform: translateY(-40vh);
+  object-fit: cover;
+  height: 180vh;
+  width: 100vw;
+}
+
+/*vertical images*/
+#storyImagesContainer {
+  top: 0;
+  position: absolute;
+  z-index: 2;
+}
+
+#storyImagesStickyDiv {
+  width: 100vw;
+  z-index: 2;
+}
+
+#scrollImages {
+  top: 0;
+  transform: translateY(-4vh);
+  position: sticky;
+  width: 20vmin;
+  z-index: 2;
+}
+
+.smallStoryImages {
+  display: flex;
+  height: 7vh;
+  margin: 0vmin 0 3vmin 0;
+  transform: translate(93.5vw, 0);
+  object-fit: cover;
+  object-position: 50% center;
+  width: 5vw;
+}
+
+#borderscroll {
+  border: 0.5vmin solid white;
+  height: 11vh;
+  margin-top: 130vh;
+  margin-right: 94vw;
+  top: 10vh;
+  transform: translate(calc(93.5vw - 2.5vh), -0.5vh);
+  opacity: 0.65;
+  position: relative;
+  width: calc(5vw + 4vh);
+  z-index: 3;
+}
+
+.storyImages:last-of-type {
+  margin-bottom: 0vh;
+}
+
+.storyImages {
+  display: flex;
+  height: 70vh;
+  margin: 0vh 0vw 30vh 50vw;
+  transform: translate(-50%, 0vh);
+  object-fit: cover;
+  object-position: 50% center;
+  width: 50vw;
+}
+
+#nextStoryImageDiv {
+  left: 50%;
+  transform: translate(-50%, 0%);
+  position: absolute;
+  height: 100vh;
+  text-align: center;
+  z-index: 3;
+}
+
+#nextStoryImage {
+  height: 56vh;
+  padding-bottom: 44vh;
+  object-fit: cover;
+  width: 40vh;
+}
+
+#nextStoryHeadline {
+  display: flex;
+  font-size: 2em;
+  font-weight: 500;
+  width: 100%;
+  justify-content: center;
+  transform: translate(0%, calc(-50vh - 2em));
+}
+
+.percentage {
+  width: 3em;
+  font-size: 0.5em;
+  vertical-align: top;
+}
+
+#scrollbarTrack {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 2px;
+  height: 101vh;
+}
+
+#scrollbarThumb {
+  position: absolute;
+  height: -1px;
+  width: 100%;
+  background-color: white;
+  border-radius: 2px;
+  top: -1px;
+}
+@keyframes showStory {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes changeImagesHeadline {
+  0% {
+    opacity: 1;
+    transform: translateY(-1.25em);
+  }
+  34% {
+    opacity: 1;
+    transform: translateY(-2.5em);
+  }
+  35% {
+    opacity: 0;
+    transform: translateY(2.5em);
+  }
+  36% {
+    opacity: 1;
+    transform: translateY(1.5em);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(-1.25em);
+  }
+}
+
+@keyframes hideImagesHeadline {
+  0% {
+    transform: translateY(-1.25em);
+  }
+  100% {
+    transform: translateY(1.5em);
+  }
+}
+
+/*animations*/
+@keyframes aim {
+  0% {
+    scale: 0;
+  }
+  60% {
+    scale: 0;
+  }
+  100% {
+    scale: 1;
+  }
+}
+
+/*numbers animation*/
+@keyframes dash {
+  0% {
+    width: 0;
+  }
+  60% {
+    width: 0;
+  }
+  100% {
+    width: 1em;
+  }
+}
+
+@keyframes dashBack {
+  0% {
+    width: 1em;
+  }
+  60% {
+    width: 1em;
+  }
+  100% {
+    width: 0;
+  }
+}
+
+@keyframes currentImagesNumber {
+  0% {
+    margin-left: -2em;
+  }
+  60% {
+    margin-left: -2em;
+  }
+  100% {
+    margin-left: 0em;
+  }
+}
+
+@keyframes currentImagesNumberBack {
+  0% {
+    margin-left: 0;
+  }
+  60% {
+    margin-left: 0;
+  }
+  100% {
+    margin-left: -2em;
+  }
+}
+
+@keyframes totalImagesNumber {
+  0% {
+    margin-right: -2em;
+  }
+  60% {
+    margin-right: -2em;
+  }
+  100% {
+    margin-right: 0;
+  }
+}
+
+@keyframes totalImagesNumberAnimationBack {
+  0% {
+    margin-right: 0;
+  }
+  60% {
+    margin-right: 0;
+  }
+  100% {
+    margin-right: -2em;
+  }
+}
+
+@keyframes rotateClockwise {
+  from {
+    transform: rotate(45deg);
+  }
+  to {
+    transform: rotate(225deg);
+  }
+}
+
+@keyframes rotateCounterClockwise {
+  from {
+    transform: rotate(45deg);
+  }
+  to {
+    transform: rotate(-135deg);
+  }
+}
+
+@keyframes centralStoryHide {
+  0% {
+  filter: brightness(100%);
+  transform: translateY(0);
+  }
+  100% {
+  filter: brightness(10%);
+  transform: translateY(-60vh);
+  }
+}
+
+@keyframes backShow {
+  0% {
+    transform: translateY(-3em);
+  }
+  100% {
+    transform: translateY(-0.5em);
+  }
+}
+
+@keyframes storyHeaderShow {
+  0% {
+    transform: translateY(-3em);
+  }
+  100% {
+    transform: translateY(-1em);
+  }
+}
+
+@keyframes headerStoryImageSpan {
+  0% {
+    top: 100vh;
+  }
+  100% {
+    top: 0vh;
+  }
+}
+
+@keyframes showImagesHeadline {
+  0% {
+    opacity: 0;
+    transform: translateY(-1.25em);
+  }
+  1% {
+    opacity: 1;
+    transform: translateY(1.5em);
+  }
+  100% {
+    transform: translateY(-1.25em);
+  }
+}
