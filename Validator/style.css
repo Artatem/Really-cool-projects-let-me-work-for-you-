@@ -1,0 +1,110 @@
+:root {
+    --dark: rgb(20, 20, 20);
+    --yellow: rgb(253, 216, 53);
+    --blue: rgb(98, 0, 234);
+  
+    --c1: rgb(3, 7, 18);
+    --c2: rgb(163, 230, 53);
+  
+    --left-color: var(--c1);
+    --right-color: var(--c2);
+  }
+  
+  body {
+    background-color: var(--dark);
+    margin: 0px;
+    color: white;
+  }
+  
+  .side {
+    padding-bottom: 100vh;
+    display: grid;
+    place-items: center;
+    position: absolute;
+    overflow: hidden;
+    width: 100%;
+  }
+  
+  .side .fancy {
+    font-family: "Lobster", cursive;
+    font-size: 1.3em;
+  }
+  
+  .side .title {
+    color: white;
+    font-family: "Rubik", sans-serif;
+    font-size: 5vw;
+    margin: 0 15vw;
+    width: 100vw;
+  }
+  
+  #left-side {
+    background-color: var(--blue);
+    z-index: 1;
+  }
+  
+  #right-side {
+    background-color: var(--yellow);
+  }
+  
+  #left-side .title {
+    color: white;
+  }
+  
+  #left-side .fancy {
+    color: var(--yellow);
+  }
+  
+  #right-side .title {
+    color: var(--dark);
+  }
+  
+  #right-side .fancy {
+    color: white;
+  }
+  
+  #validator {
+    background-color: white;
+    border-radius: 1em;
+    color: black;
+    font-size: 1.2em;
+    font-weight: 500;
+    padding: 2em;
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+  }
+  
+  #form-group {
+    position: relative;
+  }
+  
+  label {
+    position: absolute;
+    left: 10px;
+    top: 0;
+    transition: transform 0.3s ease;
+    user-select: none;
+  }
+  
+  input:focus + label,
+  .input_filled + label {
+    transform: translateY(-1em);
+  }
+  
+  .button-style {
+    background-color: var(--dark);
+    color: white;
+    font-family: "Kalnia", "Trirong", sans-serif;
+    font-weight: 500;
+    font-size: 1.05em;
+    border-radius: 6px;
+    margin: 1em auto;
+    border: none;
+    transition: transform 0.1s;
+    display: inline-block;
+  }
+  

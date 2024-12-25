@@ -8,41 +8,40 @@
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        
-  <main id="main">
-    <nav id="navbar">
-      <h1 class="navbar_logo">Таймер</h1>
-      <ul class="navbar_list">
-        <li id="settings_btn" tabindex="1" class="navbar_listItem">Настройки</li>
-        <li id="statistic_btn" tabindex="1" class="navbar_listItem">Статистика</li>
-      </ul>
-    </nav>
-    <div id="timer">
-      <ul class="timer_list">
-        <li id="work_btn" tabindex="1" class="timer_setting">Труд</li>
-        <li id="relax_btn" tabindex="1" class="timer_setting">Отдых</li>
-        <li id="death_btn" tabindex="1" class="timer_setting">Клиническая смерть</li>
-      </ul>
-      <p id="countdown">25:00</p>
-      <button id="start_button" type="button">СТАРТ</button>
-    </div>
-
-    <div id="tasks_board">
-
-      <p class="task_current">Время действовать!</p>
-      <div class="tasks_head">
-        <p class="tasks_title">Задачи</p>
-      </div>
-
-      <div id="tasks_added">
-      </div>
-      <div id="task_add" class="task_add">
-        <textarea id="task_textarea" class="closed_textarea" type="text" name="task_text" placeholder="Добавить задачу"></textarea>
-        <div id="task_add_buttons">
+      <main id="main">
+        <nav id="navbar">
+          <h1 class="navbar_logo">Таймер</h1>
+          <ul class="navbar_list">
+            <li id="settings_btn" tabindex="1" class="navbar_listItem">Настройки</li>
+            <li id="statistic_btn" tabindex="1" class="navbar_listItem">Статистика</li>
+          </ul>
+        </nav>
+        <div id="timer">
+          <ul class="timer_list">
+            <li id="work_btn" tabindex="1" class="timer_setting">Труд</li>
+            <li id="relax_btn" tabindex="1" class="timer_setting">Отдых</li>
+            <li id="death_btn" tabindex="1" class="timer_setting">Улыбка</li>
+          </ul>
+          <p id="countdown">25:00</p>
+          <button id="start_button" type="button">СТАРТ</button>
         </div>
-      </div>
-    </div>
-  </main>
+    
+        <div id="tasks_board">
+    
+          <p class="task_current">Время действовать!</p>
+          <div class="tasks_head">
+            <p class="tasks_title">Задачи</p>
+          </div>
+    
+          <div id="tasks_added">
+          </div>
+          <div id="task_add" class="task_add">
+            <textarea id="task_textarea" class="closed_textarea" type="text" name="task_text" placeholder="Добавить задачу"></textarea>
+            <div id="task_add_buttons">
+            </div>
+          </div>
+        </div>
+      </main>
     </body>
     <script scr="app.js" defer></script>
 </html>

@@ -1,479 +1,478 @@
 :root {
-    /* color variables */
-    --red-clr: rgb(186, 73, 73);
-    --green-clr: rgb(56, 133, 138);
-    --blue-clr: rgb(57, 112, 151);
-    --focus-clr: rgb(0, 0, 0, 0.2);
-    /* transition variables */
-    --transition: all 0.2s ease-in-out;
-    --transition2: all 0.1s ease-in-out;
-    /* responsive index */
-    --index: calc(1vw + 1vh);
-  }
+  /* color variables */
+  --red-clr: rgb(186, 73, 73);
+  --green-clr: rgb(56, 133, 138);
+  --blue-clr: rgb(57, 112, 151);
+  --focus-clr: rgb(0, 0, 0, 0.2);
+  /* transition variables */
+  --transition: all 0.2s ease-in-out;
+  --transition2: all 0.1s ease-in-out;
+  /* responsive index */
+  --index: calc(1vw + 1vh);
+}
+
+/* RESET */
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  user-select: none;
+  word-break: break-all;
+  /*
+  box-sizing: border-box;*/
+}
+
+body {
+  min-height: fit-content;
+  font-family: "Poppins", Arial, sans-serif;
+  background-color: var(--red-clr);
+  color: white;
+  transition: var(--transition);
+  white-space: nowrap; 
+}
+
+main {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/*NAVBAR*/
+#navbar {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  width: 50%;
+  top: 0;
+  padding: 0.5em 0 0.5em 0;
+}
+
+#navbar::before {
+  background-color: var(--focus-clr);
+  content: "";
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  position: absolute;
+}
+
+.navbar_logo {
+  font-size: 2em;
+}
+
+.navbar_list {
+  display: flex;
+  align-items: center;
+  gap: 2vw;
+  list-style: none;
+}
+
+.navbar_listItem {
+  padding: 2px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  border-radius: 3px;
+  transition: var(--transition);
+}
+
+.navbar_listItem::before {
+  content: "";
+  width: 0%;
+  left: 50%;
+  height: 2px;
+  background-color: var(--focus-clr);
+  position: absolute;
+  bottom: 0;
+  transition: var(--transition);
+}
+
+.navbar_listItem:hover::before {
+  width: 100%;
+  left: 0%;
+}
+
+.navbar_listItem:active {
+  transform: translateY(2px);
+}
+
+.navbar_listItem:focus {
+  background-color: var(--focus-clr);
+}
+
+/*TIMER*/
+#timer {
+  background-color: rgb(252, 252, 252, 0.1);
+  border-radius: 5px;
+  position: absolute;
+  padding: 1em 0 1em 0;
+  top: 6em;
+  width: 30%;
+}
+
+.timer_list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2vw;
+  list-style: none;
+  margin-bottom: 1em;
+}
+
+.timer_setting {
+  padding: 2px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  border-radius: 3px;
+  transition: var(--transition);
+}
+
+.timer_setting::before {
+  content: "";
+  width: 0%;
+  /*left: 50%;*/
+  height: 2px;
+  background-color: var(--focus-clr);
+  position: absolute;
+  bottom: 0;
+  left: -100%;
+  transition: var(--transition);
+}
+
+.timer_setting:hover::before {
+  width: 100%;
+  left: 0%;
+}
+
+.timer_setting:active {
+  transform: translateY(2px);
+  background-color: var(--focus-clr);
+  transition: var(--transition);
+}
+
+/*TIME*/
+#countdown {
+  font-size: 4em;
+  display: flex;
+  justify-content: center;
   
-  /* RESET */
-  *,
-  *::after,
-  *::before {
-    margin: 0;
-    padding: 0;
-    user-select: none;
-    word-break: break-all;
-    /*
-    box-sizing: border-box;*/
-  }
-  
-  body {
-    min-height: fit-content;
-    font-family: "Poppins", Arial, sans-serif;
-    font-size: 1.2em;
-    background-color: var(--red-clr);
-    color: white;
-    transition: var(--transition);
-  }
-  
-  main {
-    width: 100%;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  /*NAVBAR*/
-  #navbar {
-    display: flex;
-    justify-content: space-between;
-    position: absolute;
-    width: 50%;
-    top: 0;
-    padding: 0.5em 0 0.5em 0;
-  }
-  
-  #navbar::before {
-    background-color: var(--focus-clr);
-    content: "";
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    position: absolute;
-  }
-  
-  .navbar_logo {
-    font-size: 2em;
-  }
-  
-  .navbar_list {
-    display: flex;
-    align-items: center;
-    gap: 2vw;
-    list-style: none;
-  }
-  
-  .navbar_listItem {
-    padding: 2px;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-    border-radius: 3px;
-    transition: var(--transition);
-  }
-  
-  .navbar_listItem::before {
-    content: "";
-    width: 0%;
-    left: 50%;
-    height: 2px;
-    background-color: var(--focus-clr);
-    position: absolute;
-    bottom: 0;
-    transition: var(--transition);
-  }
-  
-  .navbar_listItem:hover::before {
-    width: 100%;
-    left: 0%;
-  }
-  
-  .navbar_listItem:active {
-    transform: translateY(2px);
-  }
-  
-  .navbar_listItem:focus {
-    background-color: var(--focus-clr);
-  }
-  
-  /*TIMER*/
-  #timer {
-    background-color: rgb(252, 252, 252, 0.1);
-    border-radius: 5px;
-    position: absolute;
-    padding: 1em 0 1em 0;
-    top: 6em;
-    width: 30%;
-  }
-  
-  .timer_list {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 2vw;
-    list-style: none;
-    margin-bottom: 1em;
-  }
-  
-  .timer_setting {
-    padding: 2px;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-    border-radius: 3px;
-    transition: var(--transition);
-  }
-  
-  .timer_setting::before {
-    content: "";
-    width: 0%;
-    /*left: 50%;*/
-    height: 2px;
-    background-color: var(--focus-clr);
-    position: absolute;
-    bottom: 0;
-    left: -100%;
-    transition: var(--transition);
-  }
-  
-  .timer_setting:hover::before {
-    width: 100%;
-    left: 0%;
-  }
-  
-  .timer_setting:active {
-    transform: translateY(2px);
-    background-color: var(--focus-clr);
-    transition: var(--transition);
-  }
-  
-  /*TIME*/
-  #countdown {
-    font-size: 7em;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  /*start button*/
-  #start_button {
-    font-size: 1.5em;
-    border-radius: 5px;
-    border: none;
-    padding: 0.5em 1em;
-    display: flex;
-    margin: auto;
-    color: var(--red-clr);
-    transition: var(--transition);
-    cursor: pointer;
-  }
-  
-  #start_button:active {
-    transform: translateY(2px);
-  }
-  
-  /*TASKS*/
-  #tasks_board {
-    top: 23.5em;
-    position: absolute;
-    width: 30%;
-  }
-  
-  .task_current {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .tasks_head {
-    display: flex;
-    justify-content: space-between;
-    width: 50%;
-    margin: 1em 0 1.5em 0;
-  }
-  
-  .tasks_head::before {
-    background-color: white;
-    content: "";
-    top: 4em;
-    left: 0;
-    width: 100%;
-    height: 1px;
-    position: absolute;
-  }
-  
-  .task_queue {
-    justify-content: space-between;
-    display: flex;
-    align-items: center;
-    background-color: white;
-    color: black;
-    border-radius: 5px;
-    padding: 0.5em 1em 0.5em 1em;
-    margin-bottom: 1em;
-    position: relative;
-    overflow: hidden;
-  }
-  
-  .task_queue:hover::before {
-    background-color: var(--focus-clr);
-    content: "";
-    left: 0;
-    width: 5px;
-    height: 100%;
-    position: absolute;
-  }
-  
-  .task_queue:nth-of-type(1)::before {
-    background-color: black;
-    content: "";
-    left: 0;
-    width: 5px;
-    height: 100%;
-    position: absolute;
-  }
-  
-  .task_text {
-    position: relative;
-    overflow: hidden;
-    width: 96%;
-    cursor: pointer;
-    height: 1.2em;
-    font-size: 1.2em;
-    border: none;
-    outline: none;
-    resize: none;
-  }
-  
-  .task_buttons {
-    position: absolute;
-    padding: 0.5em;
-    height: calc(100% - 1em);
-    right: 0;
-    width: 4%;
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-  }
-  
-  .material-symbols-outlined {
-    cursor: pointer;
-  }
-  
-  .material-symbols-outlined:active {
-    transform: translateY(2px);
-  }
-  
-  #task_add {
-    transition: var(--transition2);
-  }
-  
-  .task_add {
-    display: flex;
-    justify-content: center;
-    background-color: var(--focus-clr);
-    border-radius: 5px;
-    padding: 0.5em 1em;
-    border: 2px dashed var(--focus-clr);
-    margin-bottom: 5em;
-    cursor: pointer;
-  }
-  
-  .task_add_open {
-    justify-content: left;
-    display: flex;
-    color: black;
-    border: none;
-    background-color: white;
-    border-radius: 5px;
-    padding: 1em 1em 3em 1em;
-    margin-bottom: 5em;
-  }
-  
-  .task_add_open::before {
-    background-color: var(--focus-clr);
-    content: "";
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 2.3em;
-    position: absolute;
-    margin-bottom: 5em;
-  }
-  
-  #task_textarea {
-    width: 96%;
-    height: 1.2em;
-    border: none;
-    outline: none;
-    resize: none;
-    font-size: 1.2em;
-    overflow: hidden;
-    background-color: rgba(0, 0, 0, 0);
-  }
-  
-  .closed_textarea::placeholder {
-    color: white;
-    text-align: center;
-  }
-  
-  .opened_textarea::placeholder {
-    color: grey;
-    text-align: left;
-  }
-  
-  #task_add_buttons {
-    display: flex;
-    right: 2vw;
-    bottom: 0.5em;
-    position: absolute;
-    gap: 2vw;
-    margin-bottom: 5em;
-  }
-  
-  #cancel {
-    border-radius: 5px;
-    font-size: 0.8em;
-    border: none;
-    cursor: pointer;
-    background-color: rgba(0, 0, 0, 0);
-    color: black;
-    font-weight: bold;
-  }
-  
-  #cancel:active {
-    transform: translateY(2px);
-  }
-  
-  #add {
-    border-radius: 5px;
-    border: none;
-    color: white;
-    font-size: 0.8em;
-    background-color: black;
-    padding: 0.2em;
-    cursor: pointer;
-    font-weight: bold;
-  }
-  
-  #add:active {
-    transform: translateY(2px);
-  }
-  
-  /*Settings and statistic*/
-  #menu {
-    background-color: white;
-    border-radius: 5px;
-    color: black;
-    padding: 0.5em 1em 0.5em 1em;
-    position: relative;
-    width: 30%;
-    padding-bottom: 2.3em;
-  }
-  
-  #menu::after {
-    background-color: var(--focus-clr);
-    content: "";
-    top: 2.3em;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    position: absolute;
-  }
-  
-  #menu::before {
-    background-color: var(--focus-clr);
-    content: "";
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 2.3em;
-    position: absolute;
-  }
-  
-  #menu_head {
-    display: flex;
-  }
-  
-  .menu_headline {
-    margin: auto;
-  }
-  
-  #time_settings {
-    margin-top: 1.5em;
-  }
-  
-  #change_time {
-    padding: 1em 0;
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .menu_time {
-    display: grid;
-    font-size: 0.8em;
-  }
-  
-  #work,
-  #relax,
-  #death {
-    border: none;
-    border-radius: 5px;
-    padding: 0.5em 0.5em;
-    margin: 0.5em 0;
-    font-size: 1.2em;
-    background-color: var(--focus-clr);
-    width: 5em;
-  }
-  
-  #work:focus,
-  #relax:focus,
-  #death:focus {
-    outline: none;
-  }
-  
-  #change_btn {
-    display: flex;
-    right: 2vw;
-    bottom: 0.6em;
-    position: absolute;
-    border-radius: 5px;
-    border: none;
-    color: white;
-    font-size: 0.8em;
-    font-weight: bold;
-    background-color: black;
-    padding: 0.2em;
-    cursor: pointer;
-  }
-  
-  #change_btn:active {
-    transform: translateY(2px);
-  }
-  
-  /*STATISTIC*/
-  .statistic_table {
-    width: 100%;
-    margin-bottom: 20px;
-    border: 1px solid #dddddd;
-    border-collapse: collapse;
-  }
-  .statistic_table th {
-    font-weight: bold;
-    padding: 5px;
-    background: var(--focus-clr);
-    border: 1px solid var(--focus-clr);
-  }
-  .statistic_table td {
-    border: 1px solid var(--focus-clr);
-    padding: 5px;
-  }
-  
+}
+
+/*start button*/
+#start_button {
+  font-size: 1.5em;
+  border-radius: 5px;
+  border: none;
+  padding: 0.5em 1em;
+  display: flex;
+  margin: 0.5em auto;
+  color: var(--red-clr);
+  transition: var(--transition);
+  cursor: pointer;
+}
+
+#start_button:active {
+  transform: translateY(2px);
+}
+
+/*TASKS*/
+#tasks_board {
+  top: 23.5em;
+  position: absolute;
+  width: 30%;
+}
+
+.task_current {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tasks_head {
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+  margin: 1em 0 1.5em 0;
+}
+
+.tasks_head::before {
+  background-color: white;
+  content: "";
+  top: 4em;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  position: absolute;
+}
+
+.task_queue {
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+  background-color: white;
+  color: black;
+  border-radius: 5px;
+  padding: 0.5em 1em 0.5em 1em;
+  margin-bottom: 1em;
+  position: relative;
+  overflow: hidden;
+}
+
+.task_queue:hover::before {
+  background-color: var(--focus-clr);
+  content: "";
+  left: 0;
+  width: 5px;
+  height: 100%;
+  position: absolute;
+}
+
+.task_queue:nth-of-type(1)::before {
+  background-color: black;
+  content: "";
+  left: 0;
+  width: 5px;
+  height: 100%;
+  position: absolute;
+}
+
+.task_text {
+  position: relative;
+  overflow: hidden;
+  width: 96%;
+  cursor: pointer;
+  height: 1.2em;
+  font-size: 1.2em;
+  border: none;
+  outline: none;
+  resize: none;
+}
+
+.task_buttons {
+  position: absolute;
+  padding: 0.5em;
+  height: calc(100% - 1em);
+  right: 0;
+  width: 4%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.material-symbols-outlined {
+  cursor: pointer;
+}
+
+.material-symbols-outlined:active {
+  transform: translateY(2px);
+}
+
+#task_add {
+  transition: var(--transition2);
+}
+
+.task_add {
+  display: flex;
+  justify-content: center;
+  background-color: var(--focus-clr);
+  border-radius: 5px;
+  padding: 0.5em 1em;
+  border: 2px dashed var(--focus-clr);
+  margin-bottom: 5em;
+  cursor: pointer;
+}
+
+.task_add_open {
+  justify-content: left;
+  display: flex;
+  color: black;
+  border: none;
+  background-color: white;
+  border-radius: 5px;
+  padding: 1em 1em 3em 1em;
+  margin-bottom: 5em;
+}
+
+.task_add_open::before {
+  background-color: var(--focus-clr);
+  content: "";
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2.3em;
+  position: absolute;
+  margin-bottom: 5em;
+}
+
+#task_textarea {
+  width: 96%;
+  height: 1.2em;
+  border: none;
+  outline: none;
+  resize: none;
+  font-size: 1.2em;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.closed_textarea::placeholder {
+  color: white;
+  text-align: center;
+}
+
+.opened_textarea::placeholder {
+  color: grey;
+  text-align: left;
+}
+
+#task_add_buttons {
+  display: flex;
+  right: 2vw;
+  bottom: 0.5em;
+  position: absolute;
+  gap: 2vw;
+  margin-bottom: 5em;
+}
+
+#cancel {
+  border-radius: 5px;
+  font-size: 0.8em;
+  border: none;
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0);
+  color: black;
+  font-weight: bold;
+}
+
+#cancel:active {
+  transform: translateY(2px);
+}
+
+#add {
+  border-radius: 5px;
+  border: none;
+  color: white;
+  font-size: 0.8em;
+  background-color: black;
+  padding: 0.2em;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#add:active {
+  transform: translateY(2px);
+}
+
+/*Settings and statistic*/
+#menu {
+  background-color: white;
+  border-radius: 5px;
+  color: black;
+  padding: 0.5em 1em 0.5em 1em;
+  position: relative;
+  width: 30%;
+  padding-bottom: 2.3em;
+}
+
+#menu::after {
+  background-color: var(--focus-clr);
+  content: "";
+  top: 2.3em;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  position: absolute;
+}
+
+#menu::before {
+  background-color: var(--focus-clr);
+  content: "";
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2.3em;
+  position: absolute;
+}
+
+#menu_head {
+  display: flex;
+}
+
+.menu_headline {
+  margin: auto;
+}
+
+#time_settings {
+  margin-top: 1.5em;
+}
+
+#change_time {
+  padding: 1em 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.menu_time {
+  display: grid;
+  font-size: 0.8em;
+}
+
+#work,
+#relax,
+#death {
+  border: none;
+  border-radius: 5px;
+  padding: 0.5em 0.5em;
+  margin: 0.5em 0;
+  font-size: 1.2em;
+  background-color: var(--focus-clr);
+  width: 5em;
+}
+
+#work:focus,
+#relax:focus,
+#death:focus {
+  outline: none;
+}
+
+#change_btn {
+  display: flex;
+  right: 2vw;
+  bottom: 0.6em;
+  position: absolute;
+  border-radius: 5px;
+  border: none;
+  color: white;
+  font-size: 0.8em;
+  font-weight: bold;
+  background-color: black;
+  padding: 0.2em;
+  cursor: pointer;
+}
+
+#change_btn:active {
+  transform: translateY(2px);
+}
+
+/*STATISTIC*/
+.statistic_table {
+  width: 100%;
+  margin-bottom: 20px;
+  border: 1px solid #dddddd;
+  border-collapse: collapse;
+}
+.statistic_table th {
+  font-weight: bold;
+  padding: 5px;
+  background: var(--focus-clr);
+  border: 1px solid var(--focus-clr);
+}
+.statistic_table td {
+  border: 1px solid var(--focus-clr);
+  padding: 5px;
+}

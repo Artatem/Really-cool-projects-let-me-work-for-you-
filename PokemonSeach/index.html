@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width-device-width, initial-scale-1.0">
+        <title>Login & Registation Project</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="container">
+
+            <h1>Pokemon Search App</h1>
+            <form role="search" id="search-form" class="text">
+              <label for="search-input">Search for pokemon Name or ID:</label>
+              <div class="text">
+                <input type="text" name="pokemon" id="search-input" required />
+                <button id="search-button">Search</button>
+              </div>
+            </form>
+          
+            <div id="stats" class="text">
+              <div class="stat">
+                <div class="stat-content">
+                  <p>Height:</p>
+                  <p id="height" class="skill-number"></p>
+                </div>
+              </div>
+          
+              <div class="stat">
+                <div class="stat-content">
+                  <p>Weight:</p>
+                  <p id="weight" class="skill-number"></p>
+                </div>
+              </div>
+          
+              <div class="stat">
+                <div class="stat-content">
+                  <p>HP:</p>
+                  <p id="hp" class="skill-number"></p>
+                </div>
+              </div>
+          
+              <div class="stat">
+                <div class="stat-content">
+                  <p>Attack:</p>
+                  <p id="attack" class="skill-number"></p>
+                </div>
+              </div>
+          
+              <div class="stat">
+                <div class="stat-content">
+                  <span id="sprite-container" class="sprite-container"></span>
+                  <span id="name"></span>
+                </div>
+              </div>
+          
+              <div class="stat">
+                <div class="stat-content">
+                  <p>Defense:</p>
+                  <p id="defense" class="skill-number"></p>
+                </div>
+              </div>
+          
+              <div class="stat">
+                <div class="stat-content">
+                  <p>sp. Attack:</p>
+                  <p id="special-attack" class="skill-number"></p>
+                </div>
+              </div>
+          
+              <div class="stat">
+                <div class="stat-content">
+                  <p>sp. Defense:</p>
+                  <p id="special-defense" class="skill-number"></p>
+                </div>
+              </div>
+          
+              <div class="stat">
+                <div class="stat-content">
+                  <p>Speed:</p>
+                  <p id="speed" class="skill-number"></p>
+                </div>
+              </div>
+          
+            </div>
+          </div>
+    </body>
+    <script scr="app.js" defer></script>
+</html>

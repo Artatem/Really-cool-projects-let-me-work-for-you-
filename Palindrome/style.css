@@ -1,0 +1,97 @@
+@import url("https://fonts.googleapis.com/css2?family=Kalnia+Glaze:wght@100..700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Kalnia+Glaze:wght@100..700&family=Kalnia:wght@100..700&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Trirong");
+
+:root {
+  /* color variables */
+  --vio: #39185f;
+  --dark: #00005c;
+  --light-v1: #c05fa2;
+  --light-v2: #a03ca2;
+  --beige: #f0caa3;
+}
+
+body {
+  background-color: var(--vio);
+  color: var(--dark);
+  font-family: "Trirong", sans-serif;
+  text-align: center;
+}
+
+#header {
+  font-family: "Kalnia Glaze";
+  font-size: 3em;
+}
+
+#header-italic {
+  font-family: "Kalnia Glaze";
+  margin-top: -2em;
+  font-weight: 500;
+  font-style: italic;
+}
+
+#pal-main, #pal-defenition {
+  margin: 3em auto;
+}
+
+#pal-main {
+  background-color: #f0caa3;
+  padding: 2em 3em;
+  border-radius: 2em;
+  width: 50%;
+  transition: transform 0.4s ease;
+}
+
+#pal-main:hover {
+  box-shadow: 0 0 50px var(--light-v2);
+  color: var(--light-v1);
+  transform: scale(1.01);
+}
+
+
+
+#text-input {
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid var(--dark);
+  width: 50%;
+}
+
+#text-input:focus {
+  outline: 0;
+  outline-offset: 0;
+}
+
+#pal-main:hover > #input-div > #text-input {
+  color: var(--light-v1);
+  border-bottom: 2px solid var(--light-v1);
+}
+
+#check-btn {
+  background-color: var(--dark);
+  color: var(--beige);
+  font-family: "Kalnia", "Trirong", sans-serif;
+  font-weight: 500;
+  font-size: 1.05em;
+  border-radius: 6px;
+  border: none;
+  margin: 1em auto;
+  transition: transform 0.1s;
+}
+
+#check-btn:hover {
+  transform: scale(1.01);
+}
+
+#check-btn:active {
+  transform: scale(0.99);
+}
+
+#pal-main:hover > #input-div > #check-btn {
+  background-color: var(--light-v1);
+}
+
+#pal-defenition  {
+  color: var(--beige);
+  width: 40%;
+}

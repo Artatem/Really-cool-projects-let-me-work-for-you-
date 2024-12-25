@@ -1,0 +1,103 @@
+:root {
+    --bg-color: rgb(20, 20, 20);
+    --card-color: rgb(23, 23, 23);
+  }
+  
+  body {
+    align-items: center;
+    text-align: center;
+    background-color: var(--bg-color);
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    margin: 0;
+    overflow: hidden;
+    padding: 0px;
+    color: white;
+    font-family: sans-serif;
+  }
+  
+  .text {
+    width: 80%;
+    margin: 0.5em auto;
+  }
+  
+  #stats {
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    width: 500px;
+  }
+  
+  #stats:hover > .stat::after {
+    opacity: 1;
+  }
+  
+  .stat {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    cursor: pointer;
+    height: 125px;
+    position: relative;
+    width: 150px;
+    transition: transform 0.4s ease;
+  }
+  
+  .stat:hover {
+    transform: scale(1);
+  }
+  
+  .stat:hover::before {
+    opacity: 1;
+  }
+  
+  .stat::before,
+  .stat::after {
+    border-radius: inherit;
+    content: "";
+    height: 100%;
+    left: 0px;
+    opacity: 0;
+    position: absolute;
+    top: 0px;
+    transition: opacity 500ms;
+    width: 100%;
+  }
+  
+  .stat::before {
+    background: radial-gradient(
+      800px circle at var(--mouse-x) var(--mouse-y),
+      rgba(255, 255, 255, 0.06),
+      transparent 40%
+    );
+    z-index: 3;
+  }
+  
+  .stat::after {
+    background: radial-gradient(
+      400px circle at var(--mouse-x) var(--mouse-y),
+      rgba(255, 255, 255, 0.3),
+      transparent 40%
+    );
+    z-index: 1;
+  }
+  
+  .stat > .stat-content {
+    background-color: var(--card-color);
+    border-radius: inherit;
+    position: absolute;
+    inset: 1px;
+    z-index: 2;
+  }
+  
+  #name {
+    display: flex;
+    transform: translateY(-1em);
+    justify-content: center;
+  }
+  
+  .skill-number {
+    font-size: 2em;
+  }
+  
