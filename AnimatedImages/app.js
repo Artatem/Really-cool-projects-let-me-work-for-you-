@@ -136,6 +136,11 @@ const storiesText = [
   "Существует две версии происхождения названия этой породы. Одна из них связана со способностью издавать протяжный, мелодичный лай, из-за чего в название породы могло лечь французское слово begueule, дословно — лужёная глотка[1]. Другую версию связывают с малым размером собаки, и вспоминают о староанглийском слове begle, кельтском beag или старофранцузском beigh, которые имели значение «маленький» и применялись ко всем гончим, вне зависимости от породы и происхождения."
 ];
 
+//timer
+const wait = (ms) => {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+};
+
 //ADD IMAGES TO HTML
 imagesArr.forEach((e) => {
   let image = document.createElement("img");
@@ -287,7 +292,7 @@ const imagesHeadlineHide = () => {
 };
 
 //HORIZONTAL IMAGES DOWN ANIMATE
-async function horizontalImagesDownAnim() {
+const horizontalImagesDownAnim = async () => {
   imagesSlide[imageClicked].classList.toggle("imageHide");
 
   let leftSide = imageClicked;
@@ -298,12 +303,12 @@ async function horizontalImagesDownAnim() {
     if (leftSide > 0) {
       imagesSlide[imageClicked - i].classList.toggle("imageDown");
       leftSide--;
-      await new Promise((resolve) => setTimeout(resolve, 40));
+      await wait(40);
     }
     if (rightSide > 0) {
       imagesSlide[imageClicked + i].classList.toggle("imageDown");
       rightSide--;
-      await new Promise((resolve) => setTimeout(resolve, 40));
+      await wait(40);
     }
   }
 
@@ -328,20 +333,20 @@ const trackAnimtaion = () => {
 };
 
 //HORIZONTAL IMAGES UP ANIMATE
-async function horizontalImagesUpAnim() {
+const horizontalImagesUpAnim = async () => {
   imagesSlide[imageClicked].classList.toggle("imageStoreHide");
   for (let i = 0; i < imagesArr.length; i++) {
     imagesSlide[i].classList.toggle("imageDown");
-    await new Promise((resolve) => setTimeout(resolve, 40));
+    await wait(40);
   }
 
-  await new Promise((resolve) => setTimeout(resolve, 700));
+  await wait(700);
 
   imagesSlide[imageClicked].classList.toggle("imageStoreHide");
 }
 
 //FULLCSREEN IMAGE CHANGE TO LEFT
-async function toLeft(i) {
+const toLeft = async (i) => {
   imageClicked -= 1;
   if (i) imageClicked = i;
   left.src = `${imagesSlide[imageClicked].src}`;
@@ -364,9 +369,9 @@ async function toLeft(i) {
   //
   fullScreenImagesHeadline.classList.remove("imagesHeadlineShow");
   fullScreenImagesHeadline.classList.add("imagesHeadlineChange");
-  await new Promise((resolve) => setTimeout(resolve, 400));
+  await wait(400);
   fullScreenImagesHeadline.innerHTML = `${headlines[imageClicked]}`;
-  await new Promise((resolve) => setTimeout(resolve, 400));
+  await wait(400);
 
   central.src = `${left.src}`;
   left.animate(
@@ -384,7 +389,7 @@ async function toLeft(i) {
 }
 
 //FULLCSREEN IMAGE CHANGE TO RIGHT
-async function toRight(i) {
+const toRight = async (i) => {
   /*rotate crosses, change text and photo count*/
 
   imageClicked += 1;
@@ -407,9 +412,9 @@ async function toRight(i) {
   //
   fullScreenImagesHeadline.classList.remove("imagesHeadlineShow");
   fullScreenImagesHeadline.classList.add("imagesHeadlineChange");
-  await new Promise((resolve) => setTimeout(resolve, 400));
+  await wait(400);
   fullScreenImagesHeadline.innerHTML = `${headlines[imageClicked]}`;
-  await new Promise((resolve) => setTimeout(resolve, 400));
+  await wait(400);
 
   //
   central.src = `${right.src}`;
@@ -459,7 +464,7 @@ const imageToFullScreen = (imageClicked) => {
 };
 
 //IMAGE TO FULLSCREEN CLOSE ANIMATION
-async function imageToFullScreenClose() {
+const imageToFullScreenClose = async () => {
   central.animate(
     {
       left: "calc(50% - 20vmin)",
@@ -474,7 +479,7 @@ async function imageToFullScreenClose() {
       fill: "forwards"
     }
   );
-  await new Promise((resolve) => setTimeout(resolve, 1110));
+  await wait(1110);
   fullScreenImagesDiv.style.opacity = 0;
 
   ImageFullScreenClose = true;
@@ -649,7 +654,7 @@ const openStoryContainer = () => {
 };
 
 //OPEN STORY CONTAINER. HIDE HORIZONTAL IMAGES
-async function replaceImages() {
+const replaceImages = async () => {
   central.classList.toggle("centralStoryHide");
 
   if (!isStoryOpen) {
@@ -659,14 +664,14 @@ async function replaceImages() {
   }
   for (let i = 0; i < imagesArr.length; i++) {
     imagesSlide[i].classList.toggle("imageStoryDown");
-    await new Promise((resolve) => setTimeout(resolve, 40));
+    await wait(40);
   }
   if (isStoryOpen) {
     imagesSlide.forEach((e) => {
       e.classList.toggle("imageStoreHide");
     });
   }
-}
+};
 
 //OPEN STORY CONTAINER. CREATE STORY IMAGES
 const createStoryImages = () => {
@@ -711,7 +716,7 @@ const createStoryImages = () => {
 };
 
 //OPEN STORY CONTAINER. REPLACE COUNTER
-async function replaceCounter() {
+const replaceCounter = async () => {
   totalImagesNumber.classList.toggle("totalImagesNumberAnimation");
   totalImagesNumber.classList.toggle("totalImagesNumberAnimationBack");
 
@@ -721,7 +726,7 @@ async function replaceCounter() {
   dash.classList.toggle("dash");
   dash.classList.toggle("dashBack");
 
-  await new Promise((resolve) => setTimeout(resolve, 400));
+  await wait(400);
   counterDiv.classList.toggle("counterDown");
   counterDiv.classList.toggle("counterUp");
 
@@ -733,7 +738,7 @@ async function replaceCounter() {
 
   dash.classList.toggle("dash");
   dash.classList.toggle("dashBack");
-}
+};
 
 //OPEN STORY CONTAINER. SCROLL IMAGES ANIMATION
 const scrollImagesAnimate = (e) => {
@@ -964,10 +969,10 @@ const storyImagesScroll = () => {
 };
 
 //CLOSE STORY CONTAINER
-async function closeStory() {
+const closeStory = async () => {
   document.body.style.opacity = "0";
 
-  await new Promise((resolve) => setTimeout(resolve, 500));
+  await wait(500);
   //hide numbers
 
   bottomScroll = -1;
@@ -989,10 +994,10 @@ async function closeStory() {
   replaceCounter();
 
   document.body.style.opacity = "1";
-}
+};
 
 //CLOSE STORY CONTAINER TO NEXT FULLSCREEN IMAGE
-async function nextImage() {
+const nextImage = async () => {
   stopScroll = true;
   isStoryOpen = false;
 
@@ -1007,7 +1012,7 @@ async function nextImage() {
   central.src = `${imagesSlide[imageClicked].src}`;
   horizontalImagesCounter(-12.645 * imageClicked);
 
-  await new Promise((resolve) => setTimeout(resolve, 1000));
+  await wait(1000);
 
   window.scrollTo(0, 0);
   //delete story images
@@ -1020,8 +1025,8 @@ async function nextImage() {
   replaceCounter();
   //hide numbers
 
-  await new Promise((resolve) => setTimeout(resolve, 900));
+  await wait(900);
 
   bottomScroll = -1;
   stopScroll = false;
-}
+};
